@@ -1,13 +1,16 @@
 package com.example.jetbrainstest.tests;
 
+
 import com.example.jetbrainstest.pages.PhpStormPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PhpStormTest extends BaseTest{
+
 
     private PhpStormPage PhpStormPage;
 
@@ -22,7 +25,7 @@ public class PhpStormTest extends BaseTest{
     @Test
     @DisplayName("Проверка нажатия кнопки на главную страницу")
     public void mainPageButtonClickCheck(){
-        PhpStormPage.mainPagebuttonClick();
+        PhpStormPage.mainPageButtonClick();
         assertEquals("https://www.jetbrains.com/", getDriver().getCurrentUrl(), "не верная ссылка");
     }
 

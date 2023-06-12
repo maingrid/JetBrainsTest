@@ -1,11 +1,15 @@
 package com.example.jetbrainstest.pages;
 
+import com.example.jetbrainstest.AllureLogger;
+import com.example.jetbrainstest.tests.PhpStormTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.LoggerFactory;
 
 public class PhpStormPage {
+    private final AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(PhpStormTest.class));
     WebDriver driver;
 
     @FindBy(xpath = "//a[@href='/phpstorm/download/']")
@@ -14,11 +18,13 @@ public class PhpStormPage {
     @FindBy(xpath = "//a[@href='/' and @data-test='site-logo']")
     public WebElement mainPageButton;
 
-    public void mainPagebuttonClick(){
+    public void mainPageButtonClick(){
+        LOG.info("нажатие кнопки на главную страницу");
         mainPageButton.click();
     }
 
     public void ButtonDownloadPhpStormClick() {
+        LOG.info("нажатие кнопки загрузка");
         ButtonDownloadPhpStorm.click();
     }
 
