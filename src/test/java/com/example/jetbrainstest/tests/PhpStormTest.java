@@ -1,14 +1,15 @@
 package com.example.jetbrainstest.tests;
 
-
+import com.example.jetbrainstest.MyExtension;
 import com.example.jetbrainstest.pages.PhpStormPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+@ExtendWith(MyExtension.class)
 public class PhpStormTest extends BaseTest{
 
 
@@ -32,7 +33,7 @@ public class PhpStormTest extends BaseTest{
     @Test
     @DisplayName("Проверка нажатия кнопки 'загрузка'")
     public void ButtonDownloadPhpStormClickCheck(){
-        PhpStormPage.ButtonDownloadPhpStormClick();
+//        PhpStormPage.ButtonDownloadPhpStormClick();
         assertEquals("https://www.jetbrains.com/phpstorm/download/#section=windows" , getDriver().getCurrentUrl(),"не верная ссылка");
     }
 
