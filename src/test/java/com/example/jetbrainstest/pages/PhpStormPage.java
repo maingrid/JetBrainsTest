@@ -19,12 +19,12 @@ public class PhpStormPage {
     public WebElement mainPageButton;
 
     public void mainPageButtonClick(){
-        LOG.info("нажатие кнопки на главную страницу");
+        LOG.infoWithScreenshot("нажатие кнопки на главную страницу");
         mainPageButton.click();
     }
 
     public void ButtonDownloadPhpStormClick() {
-        LOG.info("нажатие кнопки загрузка");
+        LOG.infoWithScreenshot("нажатие кнопки загрузка");
         ButtonDownloadPhpStorm.click();
     }
 
