@@ -31,9 +31,6 @@ public class PhpStormPricingPage {
     private WebElement buttonSpecialOffers;
 
 
-    
-    
-    
     public Boolean buttonBuyPhpStormClickable(){
         LOG.info("Проверка активности кнопки покупки phpStorm");
         return buttonBuyPhpStormForOrganizationOnYear.isEnabled();
@@ -70,7 +67,6 @@ public class PhpStormPricingPage {
         LOG.info("нажатие кнопки специальные предложения");
         buttonSpecialOffers.click();
     }
-
 
     public PhpStormPricingPage(WebDriver driver){
         this.driver = driver;

@@ -2,6 +2,8 @@ package com.example.jetbrainstest.pages;
 
 import com.example.jetbrainstest.AllureLogger;
 
+
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,12 +22,20 @@ public class PhpStormPage {
     private WebElement buttonPricing;
     @FindBy(xpath = "//div[@id='js-menu-second-desktop']//a[@href='/phpstorm/whatsnew/']")
     private WebElement buttonWhatsNew;
+    @FindBy(xpath = "//div[@id='js-menu-second-desktop']//a[@href='/phpstorm/social/']")
+    private WebElement buttonBlogAndSocial;
+    @FindBy(xpath = "//button[@data-test='site-header-search-action']")
+    private WebElement buttonSearch;
+    @FindBy(xpath = "//input[@data-test='search-input']")
+    private WebElement inputSearch;
+    @FindBy(xpath = "//div[@class='_wt-input__field_1pdmso7_53']")
+    private WebElement searchFiled;
+
 
     public void mainPageButtonClick(){
         LOG.infoWithScreenshot("нажатие кнопки на 'главную страницу'");
         mainPageButton.click();
     }
-
     public void ButtonDownloadPhpStormClick() {
         LOG.infoWithScreenshot("нажатие кнопки 'загрузка'");
         ButtonDownloadPhpStorm.click();
@@ -38,6 +48,23 @@ public class PhpStormPage {
     public void buttonWhatsNewClick(){
         LOG.info("нажатие кнопки 'что нового'");
         buttonWhatsNew.click();
+    }
+    public void buttonBlogAndSocialClick(){
+        LOG.info("нажатие кнопки 'блог'");
+        buttonBlogAndSocial.click();
+    }
+    public void buttonSearchCLick(){
+        LOG.info("нажатие кнопки поиска");
+        buttonSearch.click();
+    }
+    public void inputSearchEnterText(String text){
+        LOG.info("ввод текста ");
+        inputSearch.sendKeys(text);
+        inputSearch.sendKeys(Keys.ENTER);
+    }
+
+    public String searchFiledAttribute(){
+        return searchFiled.getAttribute("value");
     }
 
     public PhpStormPage(WebDriver driver){
