@@ -1,4 +1,4 @@
-package com.example.jetbrainstest.pages;
+package com.example.jetbrainstest.pages.PhpStormPages;
 
 import com.example.jetbrainstest.AllureLogger;
 import org.openqa.selenium.WebDriver;
@@ -21,26 +21,31 @@ public class PhpStormBlogAndSocialPage {
     @FindBy(xpath = "//div[@class='js-posts-list']/a[1]/div[@class='post__content']")
     private WebElement postContentOnThePage;
 
-    public Boolean displayedTitlePostPage(){
+    public Boolean displayedTitlePostPage() {
         LOG.info("отображение заголовка на странице 'блог'");
         return titlePostsPage.isDisplayed();
     }
-    public Boolean displayedPostOnThePage(){
+
+    public Boolean displayedPostOnThePage() {
         LOG.info("отоброжение поста на странице 'блог'");
         return postOnThePage.isDisplayed();
     }
-    public Boolean displayedPostTitleOnThePage(){
+
+    public Boolean displayedPostTitleOnThePage() {
         LOG.info("отображение заголовка поста нас странице 'блог'");
         return postTitleOnThePage.isDisplayed();
     }
-    public Boolean displayedPostDataPublicationOnThePage(){
+
+    public Boolean displayedPostDataPublicationOnThePage() {
         LOG.info("отображение даты публикации поста на странице 'блог'");
         return postDataPublicationOnThePage.isDisplayed();
     }
-    public Boolean displayedPostContentOnThePage(){
+
+    public Boolean displayedPostContentOnThePage() {
         LOG.info("отображение текста поста на странице 'блог'");
         return postContentOnThePage.isDisplayed();
     }
+
     public PhpStormBlogAndSocialPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }

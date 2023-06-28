@@ -1,163 +1,194 @@
 package com.example.jetbrainstest.tests;
 
 import com.example.jetbrainstest.MyExtension;
-import com.example.jetbrainstest.pages.PhpStormBlogAndSocialPage;
-import com.example.jetbrainstest.pages.PhpStormPage;
-import com.example.jetbrainstest.pages.PhpStormPricingPage;
+import com.example.jetbrainstest.pages.PhpStormPages.PhpStormBlogAndSocialPage;
+import com.example.jetbrainstest.pages.PhpStormPages.PhpStormPage;
+import com.example.jetbrainstest.pages.PhpStormPages.PhpStormPricingPage;
 
+import com.example.jetbrainstest.pages.PhpStormPages.SearchResultPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @ExtendWith(MyExtension.class)
-public class PhpStormTest extends BaseTest{
+public class PhpStormTest extends BaseTest {
 
     private PhpStormPricingPage phpStormPricingPage;
-    private com.example.jetbrainstest.pages.PhpStormPage PhpStormPage;
+    private com.example.jetbrainstest.pages.PhpStormPages.PhpStormPage PhpStormPage;
     private PhpStormBlogAndSocialPage phpStormBlogAndSocialPage;
+    private SearchResultPage searchResultPage;
+
+    public void ExplicitWaitUrlToBe(int value, String URL) {
+        new WebDriverWait(getDriver(), Duration.ofSeconds(value)).until(ExpectedConditions.urlToBe(URL));
+    }
 
     @BeforeEach
     @Override
-    public void setUp(){
+    public void setUp() {
         super.setUp();
         getDriver().get("https://www.jetbrains.com/phpstorm/");
         PhpStormPage = new PhpStormPage(getDriver());
         phpStormPricingPage = new PhpStormPricingPage(getDriver());
         phpStormBlogAndSocialPage = new PhpStormBlogAndSocialPage(getDriver());
+
     }
+
     @Test
-    @DisplayName("Проверка нажатия кнопки на главную страницу")
-    public void TC1_mainPageButtonClickCheck(){
+    @DisplayName("TC1_Проверка нажатия кнопки на главную страницу")
+    public void mainPageButtonClickCheck() {
         PhpStormPage.mainPageButtonClick();
         assertEquals("https://www.jetbrains.com/", getDriver().getCurrentUrl(), "страница не открылась");
     }
+
     @Test
-    @DisplayName("Проверка нажатия кнопки 'загрузка'")
-    public void TC2_ButtonDownloadPhpStormClickCheck(){
-        PhpStormPage.ButtonDownloadPhpStormClick();
-        assertEquals("https://www.jetbrains.com/phpstorm/download/#section=windows" , getDriver().getCurrentUrl(),"страница не открылась");
+    @DisplayName("TC2_Проверка нажатия кнопки 'загрузка'")
+    public void ButtonDownloadPhpStormClickCheck() {
+        PhpStormPage.buttonDownloadPhpStormClick();
+        assertEquals("https://www.jetbrains.com/phpstorm/download/#section=windows", getDriver().getCurrentUrl(), "страница не открылась");
     }
+
     @Test
-    @DisplayName("Проверка перехода на страницу цен")
-    public void TC3_pricingPageCheck(){
+    @DisplayName("TC3_Проверка перехода на страницу цен")
+    public void TC3_pricingPageCheck() {
         PhpStormPage.buttonPricingClick();
         assertEquals("https://www.jetbrains.com/phpstorm/buy/#commercial", getDriver().getCurrentUrl(), "страница не открылась");
     }
+
     @Test
-    @DisplayName("проверка кликабельности кнопки покупки phpStorm на год")
-    public void TC4_buttonBuyPhpStormClickableCheck(){
+    @DisplayName("TC4_проверка кликабельности кнопки покупки phpStorm на год")
+    public void buttonBuyPhpStormClickableCheck() {
         PhpStormPage.buttonPricingClick();
-        assertTrue(phpStormPricingPage.buttonBuyPhpStormClickable(),"кнопка покупки phpStorm не доступна");
+        assertTrue(phpStormPricingPage.buttonBuyPhpStormClickable(), "кнопка покупки phpStorm не доступна");
     }
+
     @Test
-    @DisplayName("проверка кликабельности кнопки покупки All Products Pack на год")
-    public void TC5_buttonBuyAllProductsPackClickableCheck(){
+    @DisplayName("TC5_проверка кликабельности кнопки покупки All Products Pack на год")
+    public void buttonBuyAllProductsPackClickableCheck() {
         PhpStormPage.buttonPricingClick();
-        assertTrue(phpStormPricingPage.buttonBuyAllProductsPackClickable(),"кнопка покупки all products pack не доступна");
+        assertTrue(phpStormPricingPage.buttonBuyAllProductsPackClickable(), "кнопка покупки all products pack не доступна");
     }
+
     @Test
-    @DisplayName("проверка нажатия кнопки Monthly billing")
-    public void TC6_buttonMonthlyBillingClick(){
+    @DisplayName("TC6_проверка нажатия кнопки Monthly billing")
+    public void buttonMonthlyBillingClick() {
         PhpStormPage.buttonPricingClick();
         phpStormPricingPage.buttonMonthlyBilling();
         assertEquals("https://www.jetbrains.com/phpstorm/buy/#commercial?billing=monthly", getDriver().getCurrentUrl(), "страница не открылась");
     }
+
     @Test
-    @DisplayName("проверка кликабельности кнопки покупки phpStorm на месяц")
-    public void TC7_buttonBuyPhpStormForOrganizationOnMonthClickableCheck(){
+    @DisplayName("TC7_проверка кликабельности кнопки покупки phpStorm на месяц")
+    public void buttonBuyPhpStormForOrganizationOnMonthClickableCheck() {
         PhpStormPage.buttonPricingClick();
         phpStormPricingPage.buttonMonthlyBilling();
         assertTrue(phpStormPricingPage.buttonBuyPhpStormForOrganizationOnMonthClickable(), "кнопка покупки phpStorm не кликабельна");
     }
+
     @Test
-    @DisplayName("проверка кликабельности кнопки покупки all products pack на месяц")
-    public void TC8_buttonBuyAllProductsForOrganizationOnMonthClickableCheck(){
+    @DisplayName("TC8_проверка кликабельности кнопки покупки all products pack на месяц")
+    public void buttonBuyAllProductsForOrganizationOnMonthClickableCheck() {
         PhpStormPage.buttonPricingClick();
         phpStormPricingPage.buttonMonthlyBilling();
         assertTrue(phpStormPricingPage.buttonBuyAllProductsForOrganizationOnMonthClickable());
     }
+
     @Test
-    @DisplayName("проверка перехода на страницу с ценами для частного использования")
-    public void TC9_buttonForIndividualUseClickCheck(){
+    @DisplayName("TC9_проверка перехода на страницу с ценами для частного использования")
+    public void buttonForIndividualUseClickCheck() {
         PhpStormPage.buttonPricingClick();
         phpStormPricingPage.buttonForIndividualUseClick();
-        assertEquals("https://www.jetbrains.com/phpstorm/buy/#personal?billing=yearly", getDriver().getCurrentUrl(), "страница не открылась");
+        assertEquals("https://www.jetbrains.com/phpstorm/buy/#personal", getDriver().getCurrentUrl(), "страница не открылась");
     }
+
     @Test
-    @DisplayName("проверка кликабельности кнопки покупки phpStorm для собственного использования на год")
-    public void TC10_buttonBuyForIndividualUseClickableCheck(){
+    @DisplayName("TC10_проверка кликабельности кнопки покупки phpStorm для собственного использования на год")
+    public void buttonBuyForIndividualUseClickableCheck() {
         PhpStormPage.buttonPricingClick();
         phpStormPricingPage.buttonForIndividualUseClick();
         assertTrue(phpStormPricingPage.buttonBuyPhpStormForIndividualUseClickable(), "кнопка не кликабельна");
     }
+
     @Test
-    @DisplayName("проверка кликабельности кнопки покупки всех продуктов для собствнного использовая на год")
-    public void TC11_buttonBuyForIndividualUseAllProductsPackOnYearClickableCheck(){
+    @DisplayName("TC11_проверка кликабельности кнопки покупки всех продуктов для собствнного использовая на год")
+    public void buttonBuyForIndividualUseAllProductsPackOnYearClickableCheck() {
         PhpStormPage.buttonPricingClick();
         phpStormPricingPage.buttonForIndividualUseClick();
         assertTrue(phpStormPricingPage.buttonBuyForIndividualUseAllProductsPackOnYearClickable(), "кнопка не кликабельна");
     }
+
     @Test
-    @DisplayName("проверка переходан на страницу специальные предложения")
-    public void TC12_goToPageSpecialOffersCheck(){
+    @DisplayName("TC12_проверка переходан на страницу специальные предложения")
+    public void goToPageSpecialOffersCheck() {
         PhpStormPage.buttonPricingClick();
         phpStormPricingPage.buttonSpecialOffersCLick();
         assertEquals("https://www.jetbrains.com/phpstorm/buy/#discounts", getDriver().getCurrentUrl(), "страница не открылась");
     }
+
     @Test
-    @DisplayName("проверка перехода на страницу 'что нового'")
-    public void TC13_goToPageWhatsNewCheck(){
+    @DisplayName("TC13_проверка перехода на страницу 'что нового'")
+    public void goToPageWhatsNewCheck() {
         PhpStormPage.buttonWhatsNewClick();
         assertEquals("https://www.jetbrains.com/phpstorm/whatsnew/", getDriver().getCurrentUrl(), "страница не открылась");
     }
+
     @Test
-    @DisplayName("проверка перехода на страницу 'блог'")
-    public void TC14_goToPageBlogAndSocialCheck(){
+    @DisplayName("TC14_проверка перехода на страницу 'блог'")
+    public void goToPageBlogAndSocialCheck() {
         PhpStormPage.buttonBlogAndSocialClick();
         assertEquals("https://www.jetbrains.com/phpstorm/social/", getDriver().getCurrentUrl(), "страница не открылась");
     }
+
     @Test
-    @DisplayName("проверка отображения заголовка на странице 'блог'")
-    public void TC15_displayedTitleOnThePageCheck(){
+    @DisplayName("TC15_проверка отображения заголовка на странице 'блог'")
+    public void displayedTitleOnThePageCheck() {
         PhpStormPage.buttonBlogAndSocialClick();
         assertTrue(phpStormBlogAndSocialPage.displayedTitlePostPage(), "заголовок не отображается на странице");
     }
+
     @Test
-    @DisplayName("проверка отображения поста на странице 'блог'")
-    public void TC16_displayedPostOnThePageCheck(){
+    @DisplayName("TC16_проверка отображения поста на странице 'блог'")
+    public void displayedPostOnThePageCheck() {
         PhpStormPage.buttonBlogAndSocialClick();
         assertTrue(phpStormBlogAndSocialPage.displayedPostOnThePage(), "пост не отображается на странице");
     }
+
     @Test
-    @DisplayName("проверка отображения заголовка поста на странице 'блог'")
-    public void TC17_displayedPostTitleOnThePageCheck(){
+    @DisplayName("TC17_проверка отображения заголовка поста на странице 'блог'")
+    public void displayedPostTitleOnThePageCheck() {
         PhpStormPage.buttonBlogAndSocialClick();
         assertTrue(phpStormBlogAndSocialPage.displayedPostTitleOnThePage(), "заголовок поста не отображается на странице");
     }
+
     @Test
-    @DisplayName("проверка отображения даты публикации поста на странице 'блог'")
-    public void TC18_displayedPostDataPublicationOnThePageCheck(){
+    @DisplayName("TC18_проверка отображения даты публикации поста на странице 'блог'")
+    public void displayedPostDataPublicationOnThePageCheck() {
         PhpStormPage.buttonBlogAndSocialClick();
         assertTrue(phpStormBlogAndSocialPage.displayedPostDataPublicationOnThePage(), "дата не отображается");
     }
+
     @Test
-    @DisplayName("проверка отображения контента в посте")
-    public void TC19_displayedPostContentOnThePageCheck(){
+    @DisplayName("TC19_проверка отображения контента в посте")
+    public void displayedPostContentOnThePageCheck() {
         PhpStormPage.buttonBlogAndSocialClick();
         assertTrue(phpStormBlogAndSocialPage.displayedPostContentOnThePage(), "контент в посте не отображается");
     }
+
     @Test
-    @DisplayName("проверка поиска по слову")
-    public void TC20_SearchCheck(){
+    @DisplayName("TC20_проверка поиска по слову")
+    public void SearchCheck() {
         PhpStormPage.buttonSearchCLick();
         PhpStormPage.inputSearchEnterText("aqua");
-        assertEquals("aqua", PhpStormPage.searchFiledAttribute(), "текст не совпал");
-
+        assertEquals("aqua", searchResultPage.searchFiledAttribute(), "текст не совпал");
     }
 }

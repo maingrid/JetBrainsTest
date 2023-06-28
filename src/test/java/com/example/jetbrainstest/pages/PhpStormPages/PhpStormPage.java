@@ -1,4 +1,4 @@
-package com.example.jetbrainstest.pages;
+package com.example.jetbrainstest.pages.PhpStormPages;
 
 import com.example.jetbrainstest.AllureLogger;
 
@@ -32,42 +32,43 @@ public class PhpStormPage {
     private WebElement searchFiled;
 
 
-    public void mainPageButtonClick(){
+    public void mainPageButtonClick() {
         LOG.infoWithScreenshot("нажатие кнопки на 'главную страницу'");
         mainPageButton.click();
     }
-    public void ButtonDownloadPhpStormClick() {
+
+    public void buttonDownloadPhpStormClick() {
         LOG.infoWithScreenshot("нажатие кнопки 'загрузка'");
         ButtonDownloadPhpStorm.click();
     }
 
-    public void buttonPricingClick(){
+    public void buttonPricingClick() {
         LOG.info("нажатие кнопки 'цены'");
         buttonPricing.click();
     }
-    public void buttonWhatsNewClick(){
+
+    public void buttonWhatsNewClick() {
         LOG.info("нажатие кнопки 'что нового'");
         buttonWhatsNew.click();
     }
-    public void buttonBlogAndSocialClick(){
+
+    public void buttonBlogAndSocialClick() {
         LOG.info("нажатие кнопки 'блог'");
         buttonBlogAndSocial.click();
     }
-    public void buttonSearchCLick(){
+
+    public void buttonSearchCLick() {
         LOG.info("нажатие кнопки поиска");
         buttonSearch.click();
     }
-    public void inputSearchEnterText(String text){
+
+    public void inputSearchEnterText(String text) {
         LOG.info("ввод текста ");
         inputSearch.sendKeys(text);
         inputSearch.sendKeys(Keys.ENTER);
     }
 
-    public String searchFiledAttribute(){
-        return searchFiled.getAttribute("value");
-    }
-
-    public PhpStormPage(WebDriver driver){
+    public PhpStormPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

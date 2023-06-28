@@ -1,4 +1,4 @@
-package com.example.jetbrainstest.pages;
+package com.example.jetbrainstest.pages.PhpStormPages;
 
 import com.example.jetbrainstest.AllureLogger;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +21,7 @@ public class PhpStormPricingPage {
     private WebElement buttonBuyPhpStormForOrganizationOnMonth;
     @FindBy(xpath = "//a[@href='https://www.jetbrains.com/shop/buy?item=C:N:ALL:M']")
     private WebElement buttonBuyAllProductsPackForOrganizationOnMonth;
-    @FindBy(xpath = "//div[@class='_tab_1w1guee_13 _selected_1w1guee_141 jb-buy-page__tab']")
+    @FindBy(xpath = "//div[contains(@class,'_tabsContainer_1w1guee_13')]/div[2]")
     private WebElement buttonForIndividualUse;
     @FindBy(xpath = "//a[@href='https://www.jetbrains.com/shop/buy?item=P:N:PS:Y']")
     private WebElement buttonBuyForIndividualUseOnYear;
@@ -31,44 +31,52 @@ public class PhpStormPricingPage {
     private WebElement buttonSpecialOffers;
 
 
-    public Boolean buttonBuyPhpStormClickable(){
+    public Boolean buttonBuyPhpStormClickable() {
         LOG.info("Проверка активности кнопки покупки phpStorm");
         return buttonBuyPhpStormForOrganizationOnYear.isEnabled();
     }
-    public Boolean buttonBuyAllProductsPackClickable(){
+
+    public Boolean buttonBuyAllProductsPackClickable() {
         LOG.info("Проверка активности кнопки покупки All Products Pack");
         return buttonBuyAllProductsPackForOrganizationOnYear.isEnabled();
     }
-    public void buttonMonthlyBilling(){
+
+    public void buttonMonthlyBilling() {
         LOG.info("Нажатие кнопки Monthly biling");
         buttonMonthlyBilling.click();
     }
-    public Boolean buttonBuyPhpStormForOrganizationOnMonthClickable(){
+
+    public Boolean buttonBuyPhpStormForOrganizationOnMonthClickable() {
         LOG.info("нажатие кнопки покупки phpStorm");
         return buttonBuyPhpStormForOrganizationOnMonth.isEnabled();
     }
-    public Boolean buttonBuyAllProductsForOrganizationOnMonthClickable(){
+
+    public Boolean buttonBuyAllProductsForOrganizationOnMonthClickable() {
         LOG.info("нажатие кнопки покупки phpStorm");
         return buttonBuyAllProductsPackForOrganizationOnMonth.isEnabled();
     }
-    public void buttonForIndividualUseClick(){
+
+    public void buttonForIndividualUseClick() {
         LOG.info("нажатие кнопки For individual use");
         buttonForIndividualUse.click();
     }
-    public Boolean buttonBuyPhpStormForIndividualUseClickable(){
+
+    public Boolean buttonBuyPhpStormForIndividualUseClickable() {
         LOG.info("нажатие кнопки покупки phpStorm для собственного использования на год");
         return buttonBuyForIndividualUseOnYear.isEnabled();
     }
-    public Boolean buttonBuyForIndividualUseAllProductsPackOnYearClickable(){
+
+    public Boolean buttonBuyForIndividualUseAllProductsPackOnYearClickable() {
         LOG.info("нажатие кнопки покупки всех продуктов для собсвтенного использования на год");
         return buttonBuyForIndividualUseAllProductsPackOnYear.isEnabled();
     }
-    public void buttonSpecialOffersCLick(){
+
+    public void buttonSpecialOffersCLick() {
         LOG.info("нажатие кнопки специальные предложения");
         buttonSpecialOffers.click();
     }
 
-    public PhpStormPricingPage(WebDriver driver){
+    public PhpStormPricingPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
