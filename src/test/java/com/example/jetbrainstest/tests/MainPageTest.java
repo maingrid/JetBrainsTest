@@ -9,12 +9,12 @@ import org.openqa.selenium.WebElement;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class MainPageTest extends BaseTest{
+public class MainPageTest extends BaseTest {
     private MainPage mainPage;
 
     @BeforeEach
     @Override
-    public void setUp(){
+    public void setUp() {
         super.setUp();
         mainPage = new MainPage(getDriver());
     }

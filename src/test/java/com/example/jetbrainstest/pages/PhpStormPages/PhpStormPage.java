@@ -3,12 +3,17 @@ package com.example.jetbrainstest.pages.PhpStormPages;
 import com.example.jetbrainstest.AllureLogger;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
+
+import java.time.Duration;
 
 public class PhpStormPage {
     private final AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(PhpStormPage.class));
@@ -28,9 +33,6 @@ public class PhpStormPage {
     private WebElement buttonSearch;
     @FindBy(xpath = "//input[@data-test='search-input']")
     private WebElement inputSearch;
-    @FindBy(xpath = "//div[@class='_wt-input__field_1pdmso7_53']")
-    private WebElement searchFiled;
-
 
     public void mainPageButtonClick() {
         LOG.infoWithScreenshot("нажатие кнопки на 'главную страницу'");
@@ -65,6 +67,8 @@ public class PhpStormPage {
     public void inputSearchEnterText(String text) {
         LOG.info("ввод текста ");
         inputSearch.sendKeys(text);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='quick-search__results-title']")));
         inputSearch.sendKeys(Keys.ENTER);
     }
 

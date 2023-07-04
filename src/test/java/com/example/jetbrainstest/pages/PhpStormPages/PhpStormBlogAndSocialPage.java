@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.LoggerFactory;
 
 public class PhpStormBlogAndSocialPage {
-    private final AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(PhpStormPricingPage.class));
+    private final AllureLogger LOG = new AllureLogger(LoggerFactory.getLogger(PhpStormBlogAndSocialPage.class));
 
     @FindBy(xpath = "//div[@class='posts-section wt-col-8']//h2[@class='posts-section__title']")
     private WebElement titlePostsPage;

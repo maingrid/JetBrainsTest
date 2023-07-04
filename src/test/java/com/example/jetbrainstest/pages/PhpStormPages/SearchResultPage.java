@@ -15,7 +15,7 @@ public class SearchResultPage {
     private WebElement searchFiled;
 
 
-    public String searchFiledAttribute(){
+    public String searchFieldAttribute(){
         String val = searchFiled.getAttribute("value");
         LOG.info("Ва строке поиска текст:" + val);
         return val;
